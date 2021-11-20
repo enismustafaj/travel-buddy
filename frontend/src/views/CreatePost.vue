@@ -7,30 +7,32 @@
             <div class="card-body">
               <form action="">
                 <div class="form-group">
-                  <label for="title">Title</label>
+                  <label for="body">Date: </label>
                   <input
-                    type="text"
+                    type="datetime-local"
+                    ref="time"
+                    id="time"
                     class="form-control"
-                    id="title"
-                    placeholder="Title"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="body">Date: </label>
-                  <input type="date" class="form-control" />
-                </div>
-                <div class="form-group">
                   <label for="body">Place: </label>
-                  <input type="text" class="form-control" />
+                  <input type="text" ref="place" id="place" class="form-control" />
                 </div>
                 <div class="form-group">
                   <label for="body">Number of people: </label>
-                  <input type="number" class="form-control" />
+                  <input
+                    type="number"
+                    ref="maxlimit"
+                    id="maxlimit"
+                    class="form-control"
+                  />
                 </div>
                 <div class="form-group">
                   <label for="description">Description</label>
                   <textarea
                     name="description"
+                    ref="description"
                     id="description"
                     cols="30"
                     rows="10"
@@ -51,19 +53,27 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  methodsds: {
+  methods: {
     createPost() {
       const post = {
-        title: this.$refs.title.value,
+        username: this.$auth.user.nickname,
         place: this.$refs.place.value,
-        date: this.$refs.date.value,
-        numPeople: this.$refs.numPeople.value,
+        time: this.$refs.time.value,
+        maxlimit: this.$refs.maxlimit.value,
         description: this.$refs.description.value,
       };
-      this.$http.post("/api/posts", post).then(() => {
-        this.$router.push("/");
-      });
+      // console.log(post);
+      axios
+        .post("http://localhost:4000/trips", post)
+        .then(() => {
+          this.$router.push("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };
