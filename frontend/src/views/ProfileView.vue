@@ -55,10 +55,8 @@ export default {};
 .avatar-xl img {
     width: 110px;
 }
-.rounded-circle {
-    border-radius: 50% !important;
-}
-img {
+
+.img {
     vertical-align: middle;
     border-style: none;
 }

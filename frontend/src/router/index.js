@@ -1,14 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 // import SignInView from "../views/SignInView.vue";
-import ProfileView from "../views/ProfileView.vue";
+import Request from "../views/Request.vue";
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: ProfileView,
+    component: Request,
   },
   {
     path: "/profile",
