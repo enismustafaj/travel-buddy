@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import FeedView from "../views/FeedView.vue";
+// import ProfileView from "../views/ProfileView.vue";
 
 Vue.use(VueRouter);
 
