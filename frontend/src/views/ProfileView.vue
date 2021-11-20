@@ -17,7 +17,7 @@
               <div class="col">
                 <div class="row align-items-center">
                   <div class="col-md-7">
-                    <h4 class="mb-1">Default,name</h4>
+                    <h4 class="mb-1">{{ this.$auth.user.nickname }}</h4>
                     <p class="small mb-3">
                       <span class="badge badge-dark">New York, USA</span>
                     </p>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="row mb-4">
                   <div class="col-md-7">
-                    <p class="text-muted">Description</p>
+                    <p class="text-muted"></p>
                   </div>
                 </div>
               </div>
