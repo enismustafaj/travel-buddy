@@ -1,14 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import SignInView from "../views/SignInView.vue";
-import ProfileView from "../views/ProfileView.vue";
+import FeedView from "../views/FeedView.vue";
+// import ProfileView from "../views/ProfileView.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: ProfileView,
+    component: FeedView,
   },
   {
     path: "/profile",
@@ -18,6 +19,15 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/ProfileView.vue"),
+  },
+  {
+    path: "/newpost",
+    name: "addNewTrip",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/CreatePost.vue"),
   },
 ];
 
