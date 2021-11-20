@@ -1,25 +1,39 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
+import Vue from "vue";
+import VueRouter from "vue-router";
+import FeedView from "../views/FeedView.vue";
+// import ProfileView from "../views/ProfileView.vue";
+
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: FeedView,
   },
   {
-    path: "/about",
-    name: "About",
+    path: "/profile",
+    name: "Profile",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      import(/* webpackChunkName: "about" */ "../views/ProfileView.vue"),
+  },
+  {
+    path: "/newpost",
+    name: "addNewTrip",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/CreatePost.vue"),
   },
 ];
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+const router = new VueRouter({
+  mode: "history",
+  base: process.env.BASE_URL,
   routes,
 });
 
