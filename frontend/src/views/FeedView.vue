@@ -5,8 +5,8 @@
       <div v-for="(post, index) in posts" :key="index" class="w-50 mt-4">
         <div class="card mb-3 rounded shadow-sm">
           <div class="card-body">
-            <h5 class="card-title">{{ post.user }}</h5>
-            <p class="card-text">{{ post.body }}</p>
+            <p class="card-title">{{ post.username }}</p>
+            <p class="card-text">{{ post.description }}</p>
             <a href="#" class="btn btn-primary">Read more</a>
           </div>
         </div>
@@ -43,7 +43,8 @@ export default {
     };
   },
   created() {
-    axios.get("/api/posts").then((response) => {
+    axios.get("http://localhost:4000").then((response) => {
+      console.log(response);
       this.posts = response.data;
     });
   },

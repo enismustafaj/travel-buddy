@@ -4,18 +4,19 @@ const router = express.Router();
 
 
 router.post('/trips', async function (req, res, next) { //to post a trip
-    let post = new Post_Trips({
-        username: req.body.username,
+    let post = new Trips({
+        userID: req.body.username,
         description: req.body.description,
         maxlimit: req.body.maxlimit,
         time: req.body.time,
         place: req.body.place
     });
     try {
-        trip = await post.save();
+        await post.save();
         res.redirect('/'); // defines the url to be redirected to 
     } catch (e) {
-        res.redirect("/admin/404");//load error
+        // res.redirect("/admin/404");//load error
+        console.log(e);
     }
 });
 
