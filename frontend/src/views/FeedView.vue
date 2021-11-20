@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div class="d-flex justify-content-center align-items-center flex-column mt-5">
-      <div v-for="(post, index) in posts" :key="index" class="w-25">
+    <div class="d-flex align-items-center flex-column mt-5">
+      <input type="text" class="form-control w-50" placeholder="Search by place" />
+      <div v-for="(post, index) in posts" :key="index" class="w-50 mt-4">
         <div class="card mb-3 rounded shadow-sm">
           <div class="card-body">
             <h5 class="card-title">{{ post.user }}</h5>
@@ -11,18 +12,14 @@
         </div>
       </div>
     </div>
-    <FloatingButton />
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import FloatingButton from "../components/FloatingButton.vue";
 
 export default {
-  components: {
-    FloatingButton,
-  },
+  components: {},
   data() {
     return {
       posts: [
