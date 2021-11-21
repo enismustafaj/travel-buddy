@@ -1,21 +1,34 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light bg-secondary px-2">
+  <nav
+    class="navbar navbar-expand-md navbar-light"
+    style="background-color: #50afdc"
+  >
     <router-link class="navbar-brand" to="/">
-      <span class="font-weight-bold">TravelBuddy</span>
+      <span class="font-weight-bold" style="padding-left: 2rem"
+        >TravelBuddy</span
+      >
     </router-link>
     <ul class="navbar-nav ml-5">
       <li class="nav-item" v-if="!this.$auth.isAuthenticated">
-        <span class="nav-link" @click="signin()">Sign In</span>
+        <span class="nav-link" @click="signin()" style="cursor: pointer"
+          >Sign In</span
+        >
       </li>
       <li class="nav-item" v-if="this.$auth.isAuthenticated">
-        <span class="nav-link" @click="goToProfile()">Profile</span>
+        <span class="nav-link" @click="goToProfile()" style="cursor: pointer"
+          >Profile</span
+        >
       </li>
 
       <li class="nav-item" v-if="this.$auth.isAuthenticated">
-        <span @click="addNewPost()" class="nav-link">New Post</span>
+        <span @click="addNewPost()" class="nav-link" style="cursor: pointer"
+          >New Post</span
+        >
       </li>
       <li class="nav-item" v-if="this.$auth.isAuthenticated">
-        <span @click="logout()" class="nav-link">Log Out</span>
+        <span @click="logout()" class="nav-link" style="cursor: pointer"
+          >Log Out</span
+        >
       </li>
     </ul>
   </nav>
