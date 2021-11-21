@@ -26,7 +26,9 @@
             <p class="card-text">{{ post.description }}</p>
             <hr />
             <div class="row">
-              <div class="column-md-6"><span class="btn">Join</span></div>
+              <div class="column-md-6">
+                <span @click="join(post._id)" class="btn">Join</span>
+              </div>
               <div class="column-md-6">
                 <span class="btn" @click="readMore(post._id)">Read More</span>
               </div>
@@ -66,6 +68,36 @@ export default {
     },
     readMore(id) {
       this.$router.push(`/trip/${id}`);
+    },
+    join(id) {
+      if (!this.$auth.isAuthenticated) {
+        this.$router.push("/profile");
+      } else {
+        axios
+          .get("http://localhost:4000/activity", {
+            params: {
+              userId: this.$auth.user.sub.split("|")[1],
+              type: "join",
+            },
+          })
+          .then((res) => {
+            if (res.data.length == 0) {
+              axios
+                .post("http://localhost:4000/activity", {
+                  userId: this.$auth.user.sub.split("|")[1],
+                  activityId: id,
+                  type: "join",
+                })
+                .then((response) => {
+                  alert("Successfuly joined");
+                  console.log(response);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            }
+          });
+      }
     },
   },
   watch: {

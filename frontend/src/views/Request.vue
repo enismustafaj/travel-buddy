@@ -15,37 +15,66 @@
         <div class="col-6">27.08.2021</div>
       </div>
     </div>
-    <div class="attend">
-      <h1>People attending</h1>
-    </div>
-    <div class="table container">
-      <table class="table table-striped" id="td">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Bio</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Mark</td>
-            <td>I love sushi</td>
-          </tr>
-          <tr>
-            <td>Jacob</td>
-            <td>Jahnvi kappor is good</td>
-          </tr>
-          <tr>
-            <td>Larry</td>
-            <td>I like to sleep</td>
-          </tr>
-        </tbody>
-      </table>
+    <div v-if="isAuthor">
+      <div class="attend">
+        <h1>People attending</h1>
+      </div>
+      <div class="table container">
+        <table class="table table-striped" id="td">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Bio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mark</td>
+              <td>I love sushi</td>
+            </tr>
+            <tr>
+              <td>Jacob</td>
+              <td>Jahnvi kappor is good</td>
+            </tr>
+            <tr>
+              <td>Larry</td>
+              <td>I like to sleep</td>
+            </tr>
+            {{}}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
 <script>
-export default {};
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      isAuthor: false,
+    };
+  },
+
+  mounted() {
+    axios
+      .get("http://localhost:4000/activity", {
+        params: {
+          activityId: this.$auth.user,
+          type: "create",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.data.length > 0) {
+          this.isAuthor = true;
+        } else {
+          this.isAuthor = false;
+        }
+      });
+  },
+};
 </script>
 <style scoped>
 #btn {
