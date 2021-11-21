@@ -65,7 +65,7 @@ export default {
         maxlimit: this.$refs.maxlimit.value,
         description: this.$refs.description.value,
       };
-      // console.log(post);
+      console.log(post);
       axios
         .post("http://localhost:4000/trips", post)
         .then(() => {

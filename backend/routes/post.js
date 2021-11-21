@@ -2,6 +2,13 @@ const express = require('express');
 const Trips = require('../models/trip');
 const router = express.Router();
 
+router.get('/trips/:query', function (req, res, next) { //to show all trips
+    Trips.find({place: {$regex: `.*${req.params.query}.*`}}).then((result) => {
+        res.send(result);
+    }).catch((err) => {
+        console.log(err);
+    });
+})
 
 router.post('/trips', async function (req, res, next) { //to post a trip
     let post = new Trips({
@@ -28,6 +35,8 @@ router.get('/', function (req, res, next) { //to show all trips
         console.log(err);
     });
 })
+
+
 
 router.get('/trip/:id', function (req, res, next) {
     Trips.findById(id).then((result) => {
