@@ -29,12 +29,7 @@
                 </div>
                 <div class="form-group">
                   <label for="body">Place: </label>
-                  <input
-                    type="text"
-                    ref="place"
-                    id="place"
-                    class="form-control"
-                  />
+                  <input type="text" ref="place" id="place" class="form-control" />
                 </div>
                 <div class="form-group">
                   <label for="body">Number of people: </label>
@@ -89,7 +84,7 @@ export default {
       };
       console.log(post);
       axios
-        .post("http://localhost:4000/trips", post)
+        .post("http://travelbuddiess.herokuapp.com/trips", post)
         .then(() => {
           this.$router.push("/");
         })
@@ -184,8 +179,7 @@ body {
     sideWays 2s ease-in-out infinite alternate;
   -moz-animation: animateBubble 25s linear infinite,
     sideWays 2s ease-in-out infinite alternate;
-  animation: animateBubble 25s linear infinite,
-    sideWays 2s ease-in-out infinite alternate;
+  animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
 
   left: -5%;
   top: 5%;
@@ -200,8 +194,7 @@ body {
     sideWays 4s ease-in-out infinite alternate;
   -moz-animation: animateBubble 20s linear infinite,
     sideWays 4s ease-in-out infinite alternate;
-  animation: animateBubble 20s linear infinite,
-    sideWays 4s ease-in-out infinite alternate;
+  animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
 
   left: 5%;
   top: 80%;
@@ -216,8 +209,7 @@ body {
     sideWays 2s ease-in-out infinite alternate;
   -moz-animation: animateBubble 28s linear infinite,
     sideWays 2s ease-in-out infinite alternate;
-  animation: animateBubble 28s linear infinite,
-    sideWays 2s ease-in-out infinite alternate;
+  animation: animateBubble 28s linear infinite, sideWays 2s ease-in-out infinite alternate;
 
   left: 10%;
   top: 40%;
@@ -232,8 +224,7 @@ body {
     sideWays 3s ease-in-out infinite alternate;
   -moz-animation: animateBubble 22s linear infinite,
     sideWays 3s ease-in-out infinite alternate;
-  animation: animateBubble 22s linear infinite,
-    sideWays 3s ease-in-out infinite alternate;
+  animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
 
   left: 20%;
   top: 0;
@@ -248,8 +239,7 @@ body {
     sideWays 4s ease-in-out infinite alternate;
   -moz-animation: animateBubble 29s linear infinite,
     sideWays 4s ease-in-out infinite alternate;
-  animation: animateBubble 29s linear infinite,
-    sideWays 4s ease-in-out infinite alternate;
+  animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
 
   left: 30%;
   top: 50%;
@@ -264,8 +254,7 @@ body {
     sideWays 2s ease-in-out infinite alternate;
   -moz-animation: animateBubble 21s linear infinite,
     sideWays 2s ease-in-out infinite alternate;
-  animation: animateBubble 21s linear infinite,
-    sideWays 2s ease-in-out infinite alternate;
+  animation: animateBubble 21s linear infinite, sideWays 2s ease-in-out infinite alternate;
 
   left: 50%;
   top: 0;
@@ -280,8 +269,7 @@ body {
     sideWays 2s ease-in-out infinite alternate;
   -moz-animation: animateBubble 20s linear infinite,
     sideWays 2s ease-in-out infinite alternate;
-  animation: animateBubble 20s linear infinite,
-    sideWays 2s ease-in-out infinite alternate;
+  animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
 
   left: 65%;
   top: 70%;
@@ -296,8 +284,7 @@ body {
     sideWays 3s ease-in-out infinite alternate;
   -moz-animation: animateBubble 22s linear infinite,
     sideWays 3s ease-in-out infinite alternate;
-  animation: animateBubble 22s linear infinite,
-    sideWays 3s ease-in-out infinite alternate;
+  animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
 
   left: 80%;
   top: 10%;
@@ -312,8 +299,7 @@ body {
     sideWays 4s ease-in-out infinite alternate;
   -moz-animation: animateBubble 29s linear infinite,
     sideWays 4s ease-in-out infinite alternate;
-  animation: animateBubble 29s linear infinite,
-    sideWays 4s ease-in-out infinite alternate;
+  animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
 
   left: 90%;
   top: 50%;
@@ -328,8 +314,7 @@ body {
     sideWays 2s ease-in-out infinite alternate;
   -moz-animation: animateBubble 26s linear infinite,
     sideWays 2s ease-in-out infinite alternate;
-  animation: animateBubble 26s linear infinite,
-    sideWays 2s ease-in-out infinite alternate;
+  animation: animateBubble 26s linear infinite, sideWays 2s ease-in-out infinite alternate;
 
   left: 80%;
   top: 80%;

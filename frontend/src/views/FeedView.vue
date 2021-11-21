@@ -70,7 +70,7 @@ export default {
     };
   },
   created() {
-    axios.get("http://localhost:4000").then((response) => {
+    axios.get("http://travelbuddiess.herokuapp.com").then((response) => {
       this.posts = response.data;
     });
   },
@@ -79,7 +79,7 @@ export default {
     search() {
       console.log(this.$refs.val.value);
       axios
-        .get(`http://localhost:4000/trips/${this.$refs.val.value}`)
+        .get(`http://travelbuddiess.herokuapp.com/trips/${this.$refs.val.value}`)
         .then((response) => {
           this.posts = response.data;
         });
@@ -92,7 +92,7 @@ export default {
         this.$router.push("/profile");
       } else {
         axios
-          .get("http://localhost:4000/activity", {
+          .get("http://travelbuddiess.herokuapp.com/activity", {
             params: {
               userId: this.$auth.user.sub.split("|")[1],
               type: "join",
@@ -101,7 +101,7 @@ export default {
           .then((res) => {
             if (res.data.length == 0) {
               axios
-                .post("http://localhost:4000/activity", {
+                .post("http://travelbuddiess.herokuapp.com/activity", {
                   userId: this.$auth.user.sub.split("|")[1],
                   activityId: id,
                   type: "join",

@@ -59,7 +59,7 @@ export default {
 
   mounted() {
     axios
-      .get("http://localhost:4000/activity", {
+      .get("http://travelbuddiess.herokuapp.com/activity", {
         params: {
           activityId: this.$auth.user,
           type: "create",
