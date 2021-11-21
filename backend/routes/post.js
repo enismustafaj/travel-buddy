@@ -1,8 +1,25 @@
 const express = require('express');
 const Trips = require('../models/trip');
+const Createdactivities = require('../models/createdactivities');
 const router = express.Router();
 // const User = require('../models/profile')
-var bodyParser = require('body-parser');
+
+
+router.post('/join', async (req, res, next) => {
+    console.log(req.body)
+    let post = new Createdactivities({
+        userID: req.body.userId,
+        activityID: req.body.activityId,
+    });
+    try {
+        await post.save();
+        res.redirect('/'); // defines the url to be redirected to 
+    } catch (e) {
+        console.log(e)
+        // res.redirect("/admin/404");//load error
+    }
+    // next()
+})
 
 router.get('/trips/:query', function (req, res, next) {
     console.log(req.params)
@@ -62,21 +79,7 @@ router.get('/users/:id', function (req, res, next) {
     next()
 })
 
-router.get('/join', async (req, res, next) => {
-    console.log(req.body)
-    let post = new CreatedActivity({
-        userId: req.body.userId,
-        activityId: req.body.activityId,
-    });
-    try {
-        await post.save();
-        res.redirect('/'); // defines the url to be redirected to 
-    } catch (e) {
-        console.log(e)
-        // res.redirect("/admin/404");//load error
-    }
-    next()
-})
+
 
 
 
