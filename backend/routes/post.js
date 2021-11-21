@@ -27,6 +27,16 @@ router.post('/activity', async (req, res, next) => {
     }
 })
 
+router.get('/activity', async (req, res, next) => {
+    console.log(req.body)
+    Activities.find().then((result) => {
+        res.send(result);
+    }).catch((err) => {
+        console.log(err);
+    });
+})
+
+
 
 
 router.get('/trips/:query', function (req, res, next) {
