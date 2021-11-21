@@ -1,9 +1,12 @@
 // app.js
 const express = require("express")
 const triproutes = require('./routes/post')
+const cors = require('cors');
 var app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors());
 
 const mongoose = require('mongoose');
 const Trips = require('./models/trip')

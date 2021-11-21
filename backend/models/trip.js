@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Tripschema = new Schema({
-    username: String, // String is shorthand for {type: String}
+    userID: String, // String is shorthand for {type: String}
     // time: Date,
     time: {
         type: Date,
@@ -10,7 +10,8 @@ const Tripschema = new Schema({
     },
     place: { type: String, required: true },
     description: { type: String, required: true },
-    maxlimit: { type: Number, required: true }
+    maxlimit: { type: Number, required: true },
+    // done: {type: Boolean, required: false, default: false},
 
 });
 

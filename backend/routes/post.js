@@ -4,6 +4,13 @@ const Createdactivities = require('../models/createdactivities');
 const router = express.Router();
 // const User = require('../models/profile')
 
+router.get('/trips/:query', function (req, res, next) { //to show all trips
+    Trips.find({ place: { $regex: `.*${req.params.query}.*` } }).then((result) => {
+        res.send(result);
+    }).catch((err) => {
+        console.log(err);
+    });
+})
 
 router.post('/join', async (req, res, next) => {
     console.log(req.body)
@@ -31,10 +38,10 @@ router.get('/trips/:query', function (req, res, next) {
 
 })
 
-router.post('/trips', async (req, res) => { //to post a trip
-    console.log(req.body)
+
+router.post('/trips', async function (req, res, next) { //to post a trip
     let post = new Trips({
-        username: req.body.username,
+        userID: req.body.username,
         description: req.body.description,
         maxlimit: req.body.maxlimit,
         // time: new Date(req.body.time),
