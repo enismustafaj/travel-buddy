@@ -55,7 +55,7 @@ router.post('/trips', async function (req, res, next) { //to post a trip
         userID: req.body.username,
         description: req.body.description,
         maxlimit: req.body.maxlimit,
-        // time: new Date(req.body.time),
+        time: new Date(req.body.time),
         place: req.body.place
     });
     try {
