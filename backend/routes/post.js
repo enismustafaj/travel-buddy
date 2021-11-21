@@ -28,8 +28,7 @@ router.post('/activity', async (req, res, next) => {
 })
 
 router.get('/activity', async (req, res, next) => {
-    console.log(req.body)
-    Activities.find().then((result) => {
+    Activities.find({'userId': req.body.userId, 'type': req.body.type}).then((result) => {
         res.send(result);
     }).catch((err) => {
         console.log(err);

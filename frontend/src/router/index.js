@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import FeedView from "../views/FeedView.vue";
-// import ProfileView from "../views/ProfileView.vue";
+import {authGuard} from "../auth/authGuard";
 
 Vue.use(VueRouter);
 
@@ -17,6 +17,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
+    beforeEnter: authGuard,
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/ProfileView.vue"),
   },
@@ -26,8 +27,19 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
+    beforeEnter: authGuard,
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/CreatePost.vue"),
+  },
+  {
+    path: "/trip/:id",
+    name: "trip",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    beforeEnter: authGuard,
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Request.vue"),
   },
 ];
 
