@@ -2,6 +2,8 @@
 const express = require("express")
 const triproutes = require('./routes/post')
 var app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const mongoose = require('mongoose');
 const Trips = require('./models/trip')
@@ -12,6 +14,7 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch((error) => console.log(error));
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 
 //trip routes middleware
 app.use(triproutes)

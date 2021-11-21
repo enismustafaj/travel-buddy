@@ -1,23 +1,37 @@
 const express = require('express');
 const Trips = require('../models/trip');
 const router = express.Router();
+// const User = require('../models/profile')
+var bodyParser = require('body-parser');
 
+router.get('/trips/:query', function (req, res, next) {
+    console.log(req.params)
+    Trips.find({ place: req.params.query }).then((result) => {
+        res.send(result)
+    }).catch((err) => {
+        console.log("here", err)
+    })
 
-router.post('/trips', async function (req, res, next) { //to post a trip
-    let post = new Post_Trips({
+})
+
+router.post('/trips', async (req, res) => { //to post a trip
+    console.log(req.body)
+    let post = new Trips({
         username: req.body.username,
         description: req.body.description,
         maxlimit: req.body.maxlimit,
-        time: req.body.time,
+        // time: new Date(req.body.time),
         place: req.body.place
     });
     try {
-        trip = await post.save();
+        await post.save();
         res.redirect('/'); // defines the url to be redirected to 
     } catch (e) {
-        res.redirect("/admin/404");//load error
+        console.log(e)
+        // res.redirect("/admin/404");//load error
     }
 });
+
 
 
 router.get('/', function (req, res, next) { //to show all trips
@@ -28,14 +42,42 @@ router.get('/', function (req, res, next) { //to show all trips
     });
 })
 
+
+
 router.get('/trip/:id', function (req, res, next) {
     Trips.findById(id).then((result) => {
         res.send(result)
     }).catch((err) => {
         console.log(err);
     })
-
+    // next()
 })
+
+router.get('/users/:id', function (req, res, next) {
+    Profile.findById(id).then((result) => {
+        res.send(result)
+    }).catch((err) => {
+        console.log(err);
+    })
+    next()
+})
+
+router.get('/join', async (req, res, next) => {
+    console.log(req.body)
+    let post = new CreatedActivity({
+        userId: req.body.userId,
+        activityId: req.body.activityId,
+    });
+    try {
+        await post.save();
+        res.redirect('/'); // defines the url to be redirected to 
+    } catch (e) {
+        console.log(e)
+        // res.redirect("/admin/404");//load error
+    }
+    next()
+})
+
 
 
 module.exports = router

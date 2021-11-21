@@ -6,7 +6,6 @@ const Tripschema = new Schema({
     // time: Date,
     time: {
         type: Date,
-        default: Date.now,
         required: true
     },
     place: { type: String, required: true },
